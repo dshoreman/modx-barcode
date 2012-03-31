@@ -7,6 +7,8 @@ if ($barcode != (int) $barcode
 	return 'Barcode must be a 12 digit number - the 13th digit is added automatically.';
 
 $path = $modx->getOption('core_path') . 'components/barcode/';
+$assets_url = $modx->getOption('assets_url');
+
 require_once($path . 'lib/BCGFontFile.php');
 require_once($path . 'lib/BCGColor.php');
 require_once($path . 'lib/BCGDrawing.php');
@@ -33,7 +35,7 @@ catch (Exception $e)
 	$drawException = $e;
 }
 
-$drawing = new BCGDrawing($path . 'barcodes/output.png', $color_bg);
+$drawing = new BCGDrawing($assets_url . 'barcodes/output.png', $color_bg);
 if ($drawException)
 	$drawing->drawException($drawException);
 else
@@ -44,4 +46,4 @@ else
 
 $drawing->finish(BCGDrawing::IMG_FORMAT_PNG);
 
-return '<img src="' . $modx->getOption('site_url') . 'core/components/barcode/barcodes/output.png" style="border: 0;" />';
+return '<img src="' . $assets_url . 'barcodes/output.png" style="border: 0;" />';
