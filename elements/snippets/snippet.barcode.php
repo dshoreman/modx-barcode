@@ -1,4 +1,11 @@
 <?php
+// First of all, check we have a valid code.
+// The library adds the 13th digit automatically
+if ($barcode != (int) $barcode
+	 || strlen($barcode) < 12
+	 || strlen($barcode) > 13)
+	return 'Barcode must be a 12 digit number - the 13th digit is added automatically.';
+
 $path = $modx->getOption('core_path') . 'components/barcode/';
 require_once($path . 'lib/BCGFontFile.php');
 require_once($path . 'lib/BCGColor.php');
