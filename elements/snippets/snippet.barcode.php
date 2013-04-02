@@ -1,4 +1,13 @@
 <?php
+/**
+ * Barcode Snippet controller
+ *
+ * @package barcode
+ * @subpackage snippet
+ * @version 1.0
+ * @author Dave Shoreman <codeM0nK3Y@me.com>
+ */
+
 // First of all, check we have a valid code.
 // The library adds the 13th digit automatically
 if ($barcode != (int) $barcode
